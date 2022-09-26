@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
-const methodOverride = require('methos-override');
+const methodOverride = require('method-override');
 const session = require('express-session');
 
 
@@ -35,10 +35,13 @@ app.use(session({
 
 
 //Routes
+app.use(require('./routes/index'));
+app.use(require('./routes/notes'));
+app.use(require('./routes/users'));
 
 
 //Static Files
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 //Server is listening
